@@ -146,7 +146,7 @@ const Hero = () => {
           <Title>Devin Studdard</Title>
           <WhatWeDo>
             <Line src={lineImage} />
-            <Subtitle>From idea to implementation</Subtitle>
+            <Subtitle>Idea to Implementation</Subtitle>
           </WhatWeDo>
           <Desc>Full Stack Developer</Desc>
           <Button>Learn More</Button>
