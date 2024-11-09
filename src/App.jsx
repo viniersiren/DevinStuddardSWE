@@ -26,7 +26,6 @@ function App() {
     <Container>
       <div id="home"><Hero /></div>
       
-      <div id="projects"><Works /></div>
       <div id="contact"><Contact /></div>
     </Container>
   )
