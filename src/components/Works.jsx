@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import graphicsVid from '../graphics.mp4';
 import modelVid from '../mlmodel.mp4';
@@ -7,9 +7,6 @@ import meowVid from '../meowmap.mp4';
 import findrVid from '../findr.mp4';
 
 const data = [
-  
-  
-  
   { label: "Finder", videoUrl: findrVid },
   { label: "MeowMap", videoUrl: meowVid },
   { label: "ML program", videoUrl: modelVid },
@@ -21,6 +18,8 @@ const Section = styled.div`
   scroll-snap-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide scroll bar */
 `;
 
 const Container = styled.div`
@@ -28,7 +27,16 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  transform: translateX(-40px)
+  transform: translateX(-40px);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transform: none;
+    padding: 0 20px;
+  }
 `;
 
 const List = styled.ul`
@@ -40,18 +48,17 @@ const List = styled.ul`
   top: 70%;
   left: 18vw;
   transform: translateY(-90%);
-  
-`;
 
-const Left = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  
+  @media (max-width: 768px) {
+    position: static;
+    transform: none;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const ListItem = styled.li`
-  font-size: clamp(30px, 5vw, 80px); /* Use clamp to define min, max, and responsive range */
+  font-size: clamp(30px, 5vw, 80px);
   font-weight: bold;
   cursor: pointer;
   color: transparent;
@@ -80,35 +87,50 @@ const ListItem = styled.li`
     }
   }
 
-  /* Optional: Fine-tune for smaller screens using media queries */
   @media (max-width: 768px) {
-    font-size: clamp(25px, 8vw, 60px); /* Adjust font size further for small screens */
+    font-size: clamp(25px, 8vw, 60px);
   }
 `;
-
 
 const Right = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 const Video = styled.video`
   width: auto;
-  max-height: ${({ isWide }) => (isWide ? "10%" : "60%")};
-  max-width: 100%;
+  max-height: ${({ isWide }) => (isWide ? "400px" : "600px")};
+  max-width: ${({ isWide }) => (isWide ? "80%" : "100%")}; /* Adjust width for wider videos */
   border-radius: 10px;
 
   ${({ isWide }) =>
     isWide &&
     css`
       position: relative;
-      top: -10%; /* Move up when the video is wide */
+      top: 0;
+      margin-left: -20%; /* Shift the video left to prevent overlap */
     `}
+
+  @media (max-width: 768px) {
+    max-height: 300px;
+    max-width: 100%;
+    margin-left: 0; /* Reset margin for mobile */
+  }
 `;
-
-
+const Left = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  
+`;
 const Works = () => {
   const [selectedVideo, setSelectedVideo] = useState(findrVid);
   const [selectedLabel, setSelectedLabel] = useState("Finder");
@@ -122,21 +144,26 @@ const Works = () => {
     <Section>
       <Container>
         <Left>
-          <List>
-            {data.map((item) => (
-              <ListItem
-                key={item.label}
-                text={item.label}
-                isSelected={selectedLabel === item.label}
-                onClick={() => handleSelect(item)}
-              >
-                {item.label}
-              </ListItem>
-            ))}
-          </List>
+        <List>
+          {data.map((item) => (
+            <ListItem
+              key={item.label}
+              text={item.label}
+              isSelected={selectedLabel === item.label}
+              onClick={() => handleSelect(item)}
+            >
+              {item.label}
+            </ListItem>
+          ))}
+        </List>
         </Left>
         <Right>
-          <Video src={selectedVideo} controls autoPlay />
+          <Video
+            src={selectedVideo}
+            controls
+            autoPlay
+            isWide={selectedLabel === "Renderer"} // Apply wider styling for the graphics renderer video
+          />
         </Right>
       </Container>
     </Section>

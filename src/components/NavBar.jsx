@@ -5,14 +5,14 @@ import searchImage from '../search.png';
 const Section = styled.div`
   display: flex;
   justify-content: center;
-  width: 70%; /* Ensure it spans full width */
+  width: 100%; /* Ensure it spans full width */
 `;
 
 const Container = styled.div`
   width: 100%; /* Full width */
   max-width: 1200px; /* Max width for large screens */
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the content */
   align-items: center;
   padding: 10px 20px; /* Adjust padding for better spacing on smaller screens */
   box-sizing: border-box;
@@ -29,10 +29,11 @@ const Logo = styled.img`
 `;
 
 const List = styled.ul`
-  margin-left: 70px;
   list-style: none;
   display: flex;
   gap: 20px;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 `;
 
 const ListItem = styled.li`
@@ -44,13 +45,11 @@ const ListItem = styled.li`
 const Icons = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 20px;
 `;
 
 const Icon = styled.img`
   width: 20px;
-  margin-right: 10px;
   cursor: pointer;
 `;
 
@@ -81,16 +80,14 @@ const NavBar = () => {
                 Projects
               </a>
             </ListItem>
+            <ListItem>
+              <a href="#contact" style={{ textDecoration: 'none', color: 'white' }}>
+                Contact
+              </a>
+            </ListItem>
           </List>
         </Links>
-        <Icons>
-          <Icon src={searchImage} />
-          <Button>
-            <a href="#contact" style={{ textDecoration: 'none', color: 'white' }}>
-              Contact
-            </a>
-          </Button>
-        </Icons>
+        
       </Container>
     </Section>
   );

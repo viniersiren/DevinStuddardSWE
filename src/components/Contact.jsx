@@ -8,20 +8,22 @@ const Section = styled.div`
   scroll-snap-align: center;
   display: flex;
   justify-content: center;
+  align-items: center; /* Center vertically */
   padding: 20px;
   box-sizing: border-box;
 `;
 
 const Container = styled.div`
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px; /* Adjusted for better centering */
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  margin-right: 100
-  flex-wrap: wrap; /* Allow for wrapping on smaller screens */
-   gap: 50px; 
-  `;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center horizontally */
+  gap: 30px; /* Space between form and project list */
+  text-align: center; /* Center text */
+`;
+
+
 
 const Left = styled.div`
   flex: 2;
@@ -39,56 +41,46 @@ const Left = styled.div`
 
 const Title = styled.h1`
   font-weight: 200;
+  margin-bottom: 20px; /* Add spacing below the title */
 `;
 
 const Button = styled.button`
   background-color: pink;
   color: white;
   font-weight: 500;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  padding: 20px;
-
-  @media (max-width: 768px) {
-    padding: 15px;
-    font-size: 16px;
-  }
+  font-size: 16px;
 `;
 
 const Input = styled.input`
-  padding: 20px;
+  padding: 15px;
   background-color: lightgray;
   border: none;
   border-radius: 5px;
-
-  @media (max-width: 768px) {
-    padding: 15px;
-  }
+  width: 100%; /* Full width */
+  max-width: 500px; /* Limit width for better readability */
 `;
 
 const Form = styled.form`
-  width: 500px;
+  width: 100%;
+  max-width: 500px; /* Limit form width */
   display: flex;
   flex-direction: column;
-  gap: 25px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    gap: 15px;
-  }
+  gap: 20px;
+  align-items: center; /* Center form items */
 `;
 
 const TextArea = styled.textarea`
-  padding: 20px;
+  padding: 15px;
   background-color: lightgray;
   border: none;
   border-radius: 5px;
-
-  @media (max-width: 768px) {
-    padding: 15px;
-  }
+  width: 100%; /* Full width */
+  max-width: 500px; /* Limit width for better readability */
+  resize: vertical; /* Allow vertical resizing */
 `;
 
 const Right = styled.div`
@@ -168,20 +160,18 @@ const Contact = () => {
   return (
     <Section>
       <Container>
-        <Left>
+       
           
           <Form ref={ref} onSubmit={handleSubmit}>
             <Title>Contact Me</Title>
             <Input placeholder="Company" name="name" />
             <Input placeholder="Email" name="email" />
-            <TextArea placeholder="Message Here" name="message" rows={10} />
+            <TextArea placeholder="Message Here :)" name="message" rows={10} />
             <Button type="submit">Send</Button>
             {success && <p>Your message has been sent. I'll get back to you shortly!</p>}
           </Form>
-        </Left>
-        <Right>
-          <Img src={meImage} />
-        </Right>
+       
+       
       </Container>
     </Section>
   );
