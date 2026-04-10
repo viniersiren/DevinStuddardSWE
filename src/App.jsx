@@ -1,35 +1,37 @@
-import styled from "styled-components"
-import Contact from "./components/Contact"
-import Hero from "./components/Hero"
-import Who from "./components/Who"
-import Works from "./components/Works"
-import bgImage from './bg.jpeg';
+import React from 'react';
+import styled from 'styled-components';
+import NavBar from './components/layout/NavBar/NavBar';
+import Footer from './components/layout/Footer/Footer';
+import Hero from './components/sections/Hero/Hero';
+import About from './components/sections/About/About';
+import Experience from './components/sections/Experience/Experience';
+import Projects from './components/sections/Projects/Projects';
+import Skills from './components/sections/Skills/Skills';
+import Contact from './components/sections/Contact/Contact';
 
-const Container = styled.div`
-  height: 100vh;
-  scroll-snap-type: y mandatory;
+const AppContainer = styled.div`
+  min-height: 100vh;
+  background: ${props => props.theme.colors.background.dark};
+  background-image: ${props => props.theme.colors.background.image};
+  color: ${props => props.theme.colors.text.primary};
   scroll-behavior: smooth;
-  overflow-y: auto;
-  scrollbar-width: none;
-  color: white;
-  background: url(${bgImage}) no-repeat center center fixed;
-  background-size: cover;
-
-  &::-webkit-scrollbar{
-    display: none;
-  }
+  transition: background-color ${props => props.theme.transitions.normal}, 
+              background-image ${props => props.theme.transitions.normal};
 `;
 
 function App() {
-
   return (
-    <Container>
-      <div id="home"><Hero /></div>
-      
-      <div id="projects"><Works /></div>
-      <div id="contact"><Contact /></div>
-    </Container>
-  )
+    <AppContainer>
+      <NavBar />
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Skills />
+      <Contact />
+      <Footer />
+    </AppContainer>
+  );
 }
 
-export default App
+export default App;

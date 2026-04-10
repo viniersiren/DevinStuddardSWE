@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import lineImage from '../line.png';
-import meImage from '../me.jpeg';
 
 const Section = styled.div`
   height: 100vh;
@@ -105,7 +104,7 @@ const Hero = () => {
             <Subtitle>Looking for Work</Subtitle>
           </WhatWeDo>
           <Desc>Full Stack Developer with emphasis on native iOS development</Desc>
-          <Img src={meImage} />
+          <Img src="/me.jpeg" />
         </Left>
       </Container>
     </Section>
