@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { fadeInUp } from '../../../styles/animations';
+import { theme } from '../../../styles/theme';
 import Section from '../../common/Section/Section';
 import Card from '../../common/Card/Card';
+
+const statsMediaQuery = `(min-width: ${theme.breakpoints.lg})`;
+
+function useShowAboutStats() {
+  const [show, setShow] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(statsMediaQuery).matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(statsMediaQuery);
+    const onChange = () => setShow(mq.matches);
+    onChange();
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  return show;
+}
 
 /* Matches horizontal inset of body text inside Card sections (e.g. Experience RoleCard, ContactCard padding). */
 const AboutInner = styled.div`
@@ -19,12 +38,11 @@ const AboutInner = styled.div`
 
 const AboutContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: ${props => (props.$hasStats ? '1fr 1fr' : '1fr')};
   gap: ${props => props.theme.spacing['2xl']};
   align-items: center;
-  
+
   @media (max-width: ${props => props.theme.breakpoints.lg}) {
-    grid-template-columns: 1fr;
     gap: ${props => props.theme.spacing.xl};
   }
 `;
@@ -105,6 +123,8 @@ const StatLabel = styled.div`
 `;
 
 const About = () => {
+  const showStats = useShowAboutStats();
+
   const technologies = [
     'Swift',
     'React',
@@ -121,7 +141,7 @@ const About = () => {
     <Section id="about">
       <AboutInner>
         <SectionTitle>About Me</SectionTitle>
-        <AboutContainer>
+        <AboutContainer $hasStats={showStats}>
           <Content>
             <Text>
               I'm a <Highlight>Full Stack Developer</Highlight> with a passion for creating 
@@ -144,24 +164,26 @@ const About = () => {
               ))}
             </TechList>
           </Content>
-          <StatsGrid>
-            <StatCard>
-              <StatNumber>4+</StatNumber>
-              <StatLabel>Projects</StatLabel>
-            </StatCard>
-            <StatCard>
-              <StatNumber>iOS</StatNumber>
-              <StatLabel>Specialization</StatLabel>
-            </StatCard>
-            <StatCard>
-              <StatNumber>Full</StatNumber>
-              <StatLabel>Stack Developer</StatLabel>
-            </StatCard>
-            <StatCard>
-              <StatNumber>∞</StatNumber>
-              <StatLabel>Learning</StatLabel>
-            </StatCard>
-          </StatsGrid>
+          {showStats && (
+            <StatsGrid>
+              <StatCard>
+                <StatNumber>2+</StatNumber>
+                <StatLabel>Yrs Experience</StatLabel>
+              </StatCard>
+              <StatCard>
+                <StatNumber>Mobile</StatNumber>
+                <StatLabel>Specialization</StatLabel>
+              </StatCard>
+              <StatCard>
+                <StatNumber>Full</StatNumber>
+                <StatLabel>Stack Developer</StatLabel>
+              </StatCard>
+              <StatCard>
+                <StatNumber>AWS</StatNumber>
+                <StatLabel>Learning</StatLabel>
+              </StatCard>
+            </StatsGrid>
+          )}
         </AboutContainer>
       </AboutInner>
     </Section>

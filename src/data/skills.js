@@ -13,7 +13,7 @@ export const skills = {
     { name: 'REST APIs', level: 'intermediate', icon: '' },
     { name: 'SQL', level: 'intermediate', icon: '' },
     { name: 'Google Cloud', level: 'intermediate', icon: '' },
-    { name: 'AWS', level: 'intermediate', icon: '' },
+    { name: 'AWS', level: 'learning', icon: '' },
     { name: 'Web Scraping', level: 'intermediate', icon: '' },
   ],
   mobile: [
