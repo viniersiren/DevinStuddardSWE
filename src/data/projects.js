@@ -2,7 +2,7 @@ import findrVid from '../findr.mp4';
 import meowVid from '../meowmap.mp4';
 import modelVid from '../mlmodel.mp4';
 import graphicsVid from '../graphics.mp4';
-import { insidrSite, insidrAppStore } from './experience';
+import { insidrAppStore } from './experience';
 
 export const projects = [
   {
@@ -154,7 +154,7 @@ export const projects = [
       screenshots: [],
       appStoreUrl: insidrAppStore || null,
       githubUrl: null,
-      demoUrl: insidrSite || 'https://insidr.app',
+      demoUrl: null,
     },
     challenges: [
       'Shipping cohesive mobile and web experiences with shared product goals',

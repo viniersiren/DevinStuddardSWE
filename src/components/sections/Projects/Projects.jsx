@@ -586,7 +586,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      {project.id === 'insidr' ? 'insidr.app →' : 'Demo →'}
+                      Demo →
                     </ProjectLink>
                   )}
                   {project.media.demoComingSoon && (

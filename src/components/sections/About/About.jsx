@@ -145,7 +145,7 @@ const About = () => {
           <Content>
             <Text>
               I'm a <Highlight>Full Stack Developer</Highlight> with a passion for creating 
-              exceptional mobile and web experiences. My expertise lies in native iOS development, 
+              exceptional mobile and web experiences. I'm experienced in Mobile/Web development with React, 
               where I build intuitive and performant applications.
             </Text>
             <Text>
@@ -153,11 +153,7 @@ const About = () => {
               to implementation and deployment. I'm always eager to learn new technologies and 
               tackle challenging problems.
             </Text>
-            <Text>
-              When I'm not coding, you can find me exploring new technologies, contributing to 
-              open-source projects, or working on personal side projects that push the boundaries 
-              of what's possible.
-            </Text>
+
             <TechList>
               {technologies.map((tech) => (
                 <TechTag key={tech}>{tech}</TechTag>

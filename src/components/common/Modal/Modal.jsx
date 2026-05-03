@@ -414,7 +414,7 @@ const Modal = ({ project, onClose }) => {
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  {project.id === 'insidr' ? 'insidr.app →' : 'Live Demo →'}
+                  Live Demo →
                 </ProjectLink>
               )}
               {project.media.demoComingSoon && (

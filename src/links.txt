@@ -1,7 +1,7 @@
 findr landing page https://findrcommunity.vercel.app/
 findr ios appstore:
 
-insidr webpage: 
+Insidr (App Store only)
 insdir ios appstore;
 
 audiopal video
@@ -14,4 +14,4 @@ esque android testing link and ios page link
 
 github: https://github.com/viniersiren
 
-insidr app and site
+Insidr

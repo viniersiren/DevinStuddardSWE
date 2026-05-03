@@ -1,5 +1,3 @@
-export const insidrSite =
-  import.meta.env.VITE_INSIDR_WEB_URL || '';
 export const insidrAppStore =
   import.meta.env.VITE_INSIDR_APP_STORE_URL || '';
 
@@ -23,9 +21,6 @@ export const experience = [
     ],
     tech: ['React Native', 'TypeScript', 'Firebase', 'Gemini', 'Web', 'GCP', 'React', 'Node.js'],
     links: [
-      ...(insidrSite
-        ? [{ label: 'Website', href: insidrSite }]
-        : []),
       ...(insidrAppStore
         ? [{ label: 'App Store', href: insidrAppStore }]
         : []),
