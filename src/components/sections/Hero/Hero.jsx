@@ -107,9 +107,7 @@ const Hero = () => {
         <Title>Devin Studdard</Title>
         <Subtitle>Full Stack Developer</Subtitle>
         <Description>
-          I specialize in native iOS development and full-stack solutions. 
-          I create beautiful, functional mobile applications and web experiences 
-          that users love.
+          I specialize in Mobile/Web development with React and full-stack solutions. 
         </Description>
         <ButtonGroup>
           <Button variant="primary" size="lg" onClick={scrollToProjects}>
